@@ -4,14 +4,14 @@
     </div> --}}
 
     <form 
-        wire:submit="changeName"
+        wire:submit="changeGreeting()"
         >
     
         <div class="mt-2">
             <select 
         
             type="text" 
-            class=" p-4 border rounded-md bg-gray-700 text-black"
+            class=" p-4 border rounded-md bg-gray-700 text-white"
             wire:model.fill="greeting"
             >
                 <option value="Hello">Hello</option>
@@ -22,12 +22,17 @@
             </select>
             <input 
                 type="text"
-                class=" p-4 border rounded-md bg-gray-700 text-black"
+                class=" p-4 border rounded-md bg-gray-700 text-white"
                 wire:model="name"
                 
                 >
-        
-    
+            
+        </div>
+        <div>
+            @error('name')
+                <p class="text-red-600">{{ $message }}</p>
+                
+            @enderror
         </div>
         <div class="mt-2">
             <button 
@@ -40,9 +45,9 @@
         </div>
         
     </form>
-    @if($name !== '')
+    @if($greetingMessage !== '')
     <div>
-        {{ $greeting}}, {{ $name }}!
+        {{ $greetingMessage}}
     </div>
     @endif
 </div>
