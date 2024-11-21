@@ -27,13 +27,11 @@ public function updatedSearchText($value)
     $this->results = Article::where('title', 'like', $searchTerms)->get();
 }
 
-// #[On('search:clear-results')]
-// public function clear()
-// {
-    
-
-//     $this->reset('results','searchText');
-// }
+#[On('search:clear-results')]
+public function clear()
+{
+        $this->reset('results','searchText');
+}
 
     public function render()
     {
