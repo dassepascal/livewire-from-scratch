@@ -7,7 +7,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/search',Search::class)->name('search');
+//Route::get('/search',Search::class)->name('search');
 Route::get('/articles/{article}',\App\Livewire\ShowArticle::class)->name('show.article');
 
 
