@@ -14,11 +14,11 @@ class Article extends Model
         'title',
         'content',
         'published',
-        'notification',
+        'notifications',
     ];
 
     protected $casts = [
         'published' => 'boolean',
-        'notification' => 'string',
+        'notification' => 'array',
     ];
 }

@@ -17,7 +17,8 @@ public ?Article $article ;
     public $content=''; 
 
     public $published = false;
-    public $notification = 'none';
+    public $notifications = [];
+    public $allowNotifications = false;
 
 
 
@@ -29,7 +30,9 @@ public ?Article $article ;
 
         $this->published = $article->published;
 
-        $this->notification = $article->notification;
+        $this->notifications = $article->notifications ?? [];
+
+        $this->allowNotifications = count($this->notifications) > 0;
        
 
         $this->article = $article;
@@ -38,8 +41,11 @@ public ?Article $article ;
     public function store()
     {
         $this->validate();
+        if(!$this->allowNotifications){
+            $this->notifications = [];
+        }
         
-        Article::create($this->only(['title', 'content','published','notification']));
+        Article::create($this->only(['title', 'content','published','notifications']));
 
         
     }
@@ -48,6 +54,6 @@ public ?Article $article ;
         $this->validate();
 
         $this->article->update(
-            $this->only(['title', 'content','published','notification']));
+            $this->only(['title', 'content','published','notifications']));
     }
 }
