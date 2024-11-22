@@ -4,7 +4,10 @@ namespace App\Livewire;
 
 use App\Models\Article;
 use Livewire\Component;
+use Livewire\Attributes\Title;
 
+
+#[Title('Articles')]
 class ArticleIndex extends Component
 {
     // public $articles=[];
@@ -13,6 +16,8 @@ class ArticleIndex extends Component
     // {
     //     $this->articles = Article::all(); 
     // }
+
+   
     public function render()
     {
         return view('livewire.article-index',[
