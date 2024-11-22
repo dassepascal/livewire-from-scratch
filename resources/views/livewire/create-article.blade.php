@@ -25,7 +25,8 @@
             </div>
             <div class="mb-3">
                 <label class="flex items-center">
-                    <input type="checkbox" name="publish" class="mr-2" wire:model.boolean="publish">
+                    <input type="checkbox" name="published" class="mr-2"
+                     wire:model.boolean="form.published">
                     Published
                 </label>
             </div>

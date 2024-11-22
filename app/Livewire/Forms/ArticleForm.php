@@ -30,6 +30,7 @@ public ?Article $article ;
         $this->published = $article->published;
 
         $this->notification = $article->notification;
+       
 
         $this->article = $article;
     }
