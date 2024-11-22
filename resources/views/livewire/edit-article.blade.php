@@ -10,7 +10,7 @@
             <input 
                 type="text"
                 class=" p-4 w-full border rounded-md bg-gray-700 text-white"
-                wire:model="title"
+                wire:model="form.title"
                 >
                 <div>
                     @error('title') <span class="text-red-600">{{ $message }}</span> @enderror
@@ -21,7 +21,7 @@
             <textarea
                  id="article-content"
                  class=" p-2 w-full border rounded-md bg-gray-700 text-white"
-                 wire:model="content">
+                 wire:model="form.content">
             </textarea>
             <div>
                 @error('content') <span class="text-red-600">{{ $message }}</span> @enderror

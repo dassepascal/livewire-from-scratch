@@ -2,34 +2,26 @@
 
 namespace App\Livewire;
 
+use App\Livewire\Forms\ArticleForm;
 use App\Models\Article;
 use Livewire\Component;
 use Livewire\Attributes\Validate;
 
 class EditArticle extends Component
 {
-    public ?Article $article;
+ 
+    public ArticleForm $form;
 
-    #[Validate('required')]
-    public $title = '';
-
-    #[Validate('required')]
-    public $content = '';
-
+  
     public function mount(Article $article)
     {
-        $this->title = $article->title;
-        $this->content = $article->content;
-
-        $this->article = $article;
+        $this->form->setArticle($article);
     }
+        
 
     public function save()
     {
-        $this->validate();
-
-       $this->article->update(
-        $this->only('title', 'content'));
+        $this->form->update();
 
         $this->redirect('/dashboard/articles', navigate: true);
     }
