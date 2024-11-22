@@ -1,4 +1,12 @@
 <div class="mx-auto w-1/2 mb-4">
+    <div class="mb-3">
+        <a
+             href="/dashboard/articles/create" 
+             class="text-gray-200 p-2 bg-indigo-700 hover:bg-indigo-900 rounded-sm"
+             wire:navigate
+             >
+            Create a new article</a>
+    </div>
     <table>
         <thread class="text-xs uppercase bg-gray-700 text-gray-400">
             <tr>
