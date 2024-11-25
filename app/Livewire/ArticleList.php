@@ -3,25 +3,26 @@
 namespace App\Livewire;
 
 use App\Models\Article;
+use Illuminate\Contracts\View\View;
 use Livewire\Component;
 use Livewire\Attributes\Title;
-use App\Livewire\AdminComponent;
+use Livewire\WithPagination;
 
 #[Title('Manage Articles')]
 class ArticleList extends AdminComponent
 {
+    use withPagination;
 
- 
-  public function delete(Article $article)
-  {
-    $article->delete();
-  } 
-    public function render()
+    public function delete(Article $article): void
     {
-        return view('livewire.article-list',[
-            'articles' => Article::all()
+        $article->delete();
+    }
+
+    public function render(): View
+    {
+        return view('livewire.article-list', [
+            'articles' => Article::paginate(10),
         ]);
-     
-        
     }
 }
+
