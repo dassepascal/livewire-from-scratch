@@ -60,9 +60,15 @@
                 </div>
             </div>
             <div class="mb-3">
-                <button class="text-gray-200 p-2 bg-indigo-700 hover:bg-indigo-900 rounded-sm" type="submit">
-                    Save
-                </button>
+                <button
+                class="text-gray-200 p-2 bg-blue-700 rounded-sm disabled:opacity-75 disabled:bg-blue-300"
+                type="submit"
+                wire:dirty.class="hover:bg-blue-900"
+                wire:dirty.remove.attr="disabled"
+                disabled
+            >
+                Save
+            </button>
             </div>
 
     </form>
