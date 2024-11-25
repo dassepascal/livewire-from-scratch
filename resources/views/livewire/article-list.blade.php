@@ -7,7 +7,20 @@
              >
             Create a new article
         </a>
-        <livewire:published-count  />
+
+        <div>
+            <button class="text-gray-200 p-2 bg-blue-700 hover:bg-blue-900 rounded-sm">
+                Show All
+            </button>
+            <button class="text-gray-200 p-2 bg-blue-700 hover:bg-blue-900 rounded-sm">
+                Show Published( <livewire:published-count placeholder-text="loading" />)
+            </button>
+        </div>
+        
+       
+    </div>
+    <div class="my-3">
+        {{ $articles->links() }}
     </div>
     <table class="w-full">
         <thread class="text-xs uppercase bg-gray-700 text-gray-400">
