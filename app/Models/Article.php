@@ -19,6 +19,6 @@ class Article extends Model
 
     protected $casts = [
         'published' => 'boolean',
-        'notification' => 'array',
+        'notifications' => 'array',
     ];
 }
