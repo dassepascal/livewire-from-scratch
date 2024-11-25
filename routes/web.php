@@ -14,7 +14,7 @@ Route::get('/', ArticleIndex::class);
 Route::get('/articles/{article}',\App\Livewire\ShowArticle::class)->name('show.article');
 
 Route::get('/dashboard', Dashboard::class);
-Route::get('/dashboard/articles', ArticleList::class);
+Route::get('/dashboard/articles', ArticleList::class);//->lazy()
 Route::get('/dashboard/articles/create', CreateArticle::class);
 Route::get('/dashboard/articles/{article}/edit', EditArticle::class);
 
