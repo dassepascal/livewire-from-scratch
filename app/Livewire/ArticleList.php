@@ -23,13 +23,13 @@ class ArticleList extends AdminComponent
     public function showAll(): void
     {
         $this->showOnlyTrashed = false;
-        $this->resetPage();
+        $this->resetPage(pageName:'articles-page');
     }
 
     public function showPublished(): void
     {
         $this->showOnlyTrashed = true;
-        $this->resetPage();
+        $this->resetPage(pageName:'articles-page');
     }
     public function render(): View
     {
@@ -40,7 +40,7 @@ class ArticleList extends AdminComponent
             $query->where ('published',1);
         }
         return view('livewire.article-list', [
-            'articles' => $query->paginate(10),
+            'articles' => $query->paginate(10,pageName:'articles-page'),
         ]);
     }
 }
