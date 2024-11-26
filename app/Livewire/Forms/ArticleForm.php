@@ -4,17 +4,21 @@ namespace App\Livewire\Forms;
 
 use Livewire\Form;
 use App\Models\Article;
+use Livewire\Attributes\Locked;
 use Livewire\Attributes\Validate;
 
 class ArticleForm extends Form
 {
-public ?Article $article ;
+    public ?Article $article;
+    
+    #[Locked]
+    public int $id;
 
     #[Validate('required')]
-    public $title='';
+    public $title = '';
 
     #[Validate('required')]
-    public $content=''; 
+    public $content = '';
 
     public $published = false;
     public $notifications = [];
@@ -24,6 +28,8 @@ public ?Article $article ;
 
     public function setArticle(Article $article)
     {
+        $this->id = $article->id;
+
         $this->title = $article->title;
 
         $this->content = $article->content;
@@ -33,7 +39,7 @@ public ?Article $article ;
         $this->notifications = $article->notifications ?? [];
 
         $this->allowNotifications = count($this->notifications) > 0;
-       
+
 
         $this->article = $article;
     }
@@ -41,22 +47,26 @@ public ?Article $article ;
     public function store()
     {
         $this->validate();
-        if(!$this->allowNotifications){
+        if (!$this->allowNotifications) {
             $this->notifications = [];
         }
-        
-        Article::create($this->only(['title', 'content','published','notifications']));
 
-        cache()->forget(key:'published-count');
-        
+        Article::create($this->only(['title', 'content', 'published', 'notifications']));
+
+        cache()->forget(key: 'published-count');
     }
     public function update()
     {
         $this->validate();
 
-        $this->article->update(
-            $this->only(['title', 'content','published','notifications']));
+        if (!$this->allowNotifications) {
+            $this->notifications = [];
+        }
 
-        cache()->forget(key:'published-count');
+        $this->article->update(
+            $this->only(['title', 'content', 'published', 'notifications'])
+        );
+
+        cache()->forget(key: 'published-count');
     }
 }
