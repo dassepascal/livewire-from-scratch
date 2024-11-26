@@ -12,7 +12,7 @@ class Search extends Component
 {
 
     // #[Validate('required')]
-   // #[Url(as:'q',except:'',history:true)]
+    #[Url(as:'q',except:'')]
     public $searchText = '';
     // public $results = [];
     public $placeholder;

@@ -6,6 +6,7 @@ use App\Models\Article;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\Attributes\Title;
+use Livewire\Attributes\Session;
 use Livewire\Attributes\Computed;
 use Illuminate\Contracts\View\View;
 
@@ -13,14 +14,16 @@ use Illuminate\Contracts\View\View;
 class ArticleList extends AdminComponent
 {
     use withPagination;
-    public $showOnlyTrashed = false;
+
+    #[Session(key:'published')]
+    public $showOnlyPublished = false;
 
     #[Computed/*(persist:true)*/]
     public function articles()
     {
         $query = Article::query();
 
-        if ($this->showOnlyTrashed) {
+        if ($this->showOnlyPublished) {
             $query->where('published',1);
         }
         return  $query->paginate(10,pageName:'articles-page');
@@ -38,17 +41,17 @@ class ArticleList extends AdminComponent
     }
 
 
-    public function showAll(): void
+    public function togglePublished($showOnlyPublished): void
     {
-        $this->showOnlyTrashed = false;
+        $this->showOnlyPublished = $showOnlyPublished ;
         $this->resetPage(pageName:'articles-page');
     }
 
-    public function showPublished(): void
-    {
-        $this->showOnlyTrashed = true;
-        $this->resetPage(pageName:'articles-page');
-    }
+    // public function showPublished(): void
+    // {
+    //     $this->showOnlyTrashed = true;
+    //     $this->resetPage(pageName:'articles-page');
+    // }
     // public function render(): View
     // {
 
