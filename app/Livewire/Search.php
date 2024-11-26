@@ -6,8 +6,10 @@ use App\Models\Article;
 use Livewire\Component;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Url;
+use Livewire\Attributes\Isolate;
 use Livewire\Attributes\Validate;
 
+#[Isolate]
 class Search extends Component
 {
 
