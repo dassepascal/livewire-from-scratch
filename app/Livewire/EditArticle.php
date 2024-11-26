@@ -23,7 +23,9 @@ class EditArticle extends Component
     {
         $this->form->update();
 
-        $this->redirect('/dashboard/articles', navigate: true);
+        session()->flash('status', 'Article updated');
+
+        $this->redirect(url: ArticleList::class, navigate: true);
     }
     public function render()
     {
