@@ -47,6 +47,7 @@ public ?Article $article ;
         
         Article::create($this->only(['title', 'content','published','notifications']));
 
+        cache()->forget(key:'published-count');
         
     }
     public function update()
@@ -55,5 +56,7 @@ public ?Article $article ;
 
         $this->article->update(
             $this->only(['title', 'content','published','notifications']));
+
+        cache()->forget(key:'published-count');
     }
 }

@@ -9,9 +9,9 @@ use Livewire\Attributes\Layout;
 // #[Title('Dashboard')]
 class AdminComponent extends Component
 {
-    public function render()
-    {
-        return view('livewire.dashboard');
-        // ->layout('components.layouts.admin');
-    }
+    // public function render()
+    // {
+    //     return view('livewire.dashboard');
+        
+    // }
 }
