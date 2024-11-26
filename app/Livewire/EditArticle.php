@@ -6,9 +6,12 @@ use App\Livewire\Forms\ArticleForm;
 use App\Models\Article;
 use Livewire\Component;
 use Livewire\Attributes\Validate;
+use Livewire\WithFileUploads;
 
 class EditArticle extends Component
 {
+
+    use WithFileUploads;
  
     public ArticleForm $form;
 
