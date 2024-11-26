@@ -77,7 +77,9 @@
                         No
                     </label>
                 </div>
-                <div x-show="$wire.form.allowNotifications">
+                <div x-show="$wire.form.allowNotifications"
+                wire:transition
+                >
                     <label class="flex items-center">
                         <input type="checkbox" value="email" class="mr-2" wire:model="form.notifications">
                         Email

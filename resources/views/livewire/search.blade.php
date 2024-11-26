@@ -10,12 +10,14 @@
                 placeholder="{{$placeholder}}"  
                 wire:offline.attr="disabled"               
                 >
-             
         </div>
-    
-        
-          
-        
-    </form>
-    <livewire:search-results :results="$results" :show="!empty($searchText)"/>
+                    
+            </form>
+
+    @if(!empty($searchText))
+    <div wire:transition>
+        <livewire:search-results :results="$results" />
+    </div>
+   
+    @endif
 </div>
